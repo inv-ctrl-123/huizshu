@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Community Event Portal</title>
+
+  <!-- External CSS (linked) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Internal CSS -->
+  <style>
+    /* Body Styles */
+    body {
+      background-color: #F5F5F5; /* Light pastel background */
+      color: #333; /* Text color */
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header Styles */
+    h1 {
+      color: #FFB6C1; /* Pastel pink */
+      text-align: center;
+      padding: 30px;
+      font-size: 2.5rem;
+      margin-bottom: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: float 2s ease-in-out infinite;
+    }
+
+    /* Floating Animation for Header */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Event Card Styles */
+    .eventCard {
+      background-color: #A8D5BA; /* Pastel green */
+      padding: 20px;
+      color: #fff;
+      border-radius: 8px;
+      margin: 20px auto;
+      width: 80%;
+      text-align: center;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Event Card Title */
+    .eventCard h2 {
+      color: #FF6347; /* Pastel coral */
+      font-size: 1.8rem;
+    }
+
+    /* Link Styling */
+    a {
+      color: #6A5ACD; /* Pastel purple */
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #483D8B;
+    }
+
+    /* Button Styles */
+    button {
+      background-color: #FFB6C1; /* Pastel pink */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #FF69B4; /* Hot pink */
+    }
+
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+      background-color: #F6F6F6; /* Light pastel background for rows */
+    }
+
+    th {
+      background-color: #FFD700; /* Pastel yellow */
+      color: white;
+    }
+
+    /* News Article Section */
+    .news-article {
+      column-count: 2;
+      column-gap: 30px;
+      column-rule: 1px solid #ddd;
+      margin: 20px;
+    }
+
+    /* Image Styles */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Floating Text Effect */
+    .floating-text {
+      color: #FF6347; /* Pastel coral */
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: text-float 2s ease-in-out infinite;
+    }
+
+    /* Animation for Floating Text */
+    @keyframes text-float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #6A5ACD; /* Pastel purple */
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Media Query for Mobile */
+    @media (max-width: 768px) {
+      body {
+        font-size: 17px;
+      }
+
+      .eventCard {
+        width: 95%;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to the XXX Local Community Event Portal</h1>
+
+  <!-- Event Card Section -->
+  <div class="eventCard">
+    <h2>Upcoming Events</h2>
+    <p>Join us for exciting community events happening in your neighborhood!</p>
+    <img src="https://via.placeholder.com/400x200.png?text=Cartoon+Event+Image" alt="Event Cartoon">
+  </div>
+
+  <!-- "Good Girls" Feature Section -->
+  <div class="floating-text">
+    <h2>Good Girls in Our Community</h2>
+    <h2>empowering women of community</h2>
+    <p>Recognizing the outstanding contributions of young girls who inspire change!</p>
+  </div>
+
+  <!-- Table Section -->
+  <h2>Events Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Community Cleanup</td>
+        <td>June 15, 2025</td>
+        <td>Park Central</td>
+      </tr>
+      <tr>
+        <td>Food Drive</td>
+        <td>July 5, 2025</td>
+        <td>Community Center</td>
+      </tr>
+      <tr>
+        <td>Sports Day</td>
+        <td>August 20, 2025</td>
+        <td>Sports Complex</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Button Section -->
+  <button>Register for Event</button>
+
+  <!-- News Article Section -->
+  <section class="news-article">
+    <h2>Community News</h2>
+    <p>Stay updated with the latest community news, events, and initiatives happening near you.</p>
+    <p>Our community thrives with active participation and support from everyone. Join hands and contribute to the betterment of our local area.</p>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Local Community Event Portal</p>
+  </footer>
+
+  <!-- External Scripts -->
+  <script src="scripts.js"></script>
+</body>
+</html>
