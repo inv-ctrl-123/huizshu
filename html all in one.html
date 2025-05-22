@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Portal - Vibrant Pastel Edition</title>
+    <style>
+        /* Import Google Fonts for bold typography */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fredoka+One:wght@400&display=swap');
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d1b4e;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #ffecd2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(221, 160, 221, 0.3) 0%, transparent 50%);
+            animation: floatingBg 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatingBg {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+        }
+
+        /* Navigation Styles */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.3rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        nav ul li a:hover::before {
+            left: 100%;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Moving Text Animations */
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rainbow {
+            0% { color: #ff6b6b; }
+            16.66% { color: #4ecdc4; }
+            33.33% { color: #45b7d1; }
+            50% { color: #f9ca24; }
+            66.66% { color: #f0932b; }
+            83.33% { color: #eb4d4b; }
+            100% { color: #6c5ce7; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+
+        /* Welcome Banner */
+        #welcomeBanner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #welcomeBanner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        #welcomeBanner h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: bounceIn 1.5s ease-out, pulse 2s infinite 2s;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #welcomeBanner .moving-subtitle {
+            font-size: 1.8rem;
+            font-weight: 700;
+            animation: slideInLeft 1s ease-out 0.5s both;
+            margin-bottom: 2rem;
+        }
+
+        #welcomeBanner .special-offer {
+            color: #ff6b6b;
+            font-weight: 900;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0, #fd79a8);
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: slideInRight 1s ease-out 1s both, float 3s ease-in-out infinite 2s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Highlight Class with Animation */
+        .highlight {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 800;
+            display: inline-block;
+            animation: rainbow 3s infinite, float 4s ease-in-out infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #2d1b4e;
+            position: relative;
+            font-family: 'Fredoka One', cursive;
+            animation: bounceIn 1s ease-out;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 200px;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe);
+            margin: 2rem auto;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Image Gallery Styles */
+        .gallery-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 20px;
+            margin: 2rem 0;
+        }
+
+        .gallery-table td {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-table td::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-table td:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-table td:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .gallery-image {
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            filter: brightness(1.1) saturate(1.2);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            filter: brightness(1.3) saturate(1.4);
+        }
+
+        .caption {
+            margin-top: 1.5rem;
+            font-weight: 800;
+            color: #2d1b4e;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 25%, #fd79a8 50%, #a29bfe 75%, #6c5ce7 100%);
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+            pointer-events: none;
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            color: #2d1b4e;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.5rem;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+            background: white;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: 900;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Video Styles */
+        .video-container {
+            text-align: center;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            margin: 4rem 0;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .video-container h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2d1b4e;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: rainbow 4s infinite;
+        }
+
+        video {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        video:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        /* Utility Classes */
+        .btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 1rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .message {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 6px solid #28a745;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .error {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            border-left-color: #dc3545;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d1b4e 0%, #764ba2 50%, #667eea 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            margin-top: 6rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                padding: 2rem 0;
+            }
+
+            nav ul li {
+                margin: 0.8rem 0;
+            }
+
+            nav ul li a {
+                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            #welcomeBanner {
+                padding: 6rem 1rem 4rem;
+            }
+
+            #welcomeBanner h1 {
+                font-size: 3rem;
+            }
+
+            .gallery-image {
+                width: 280px;
+                height: 200px;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+
+            section h2 {
+                font-size: 2.5rem;
+            }
+
+            .form-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+
+        /* Character counter */
+        .char-counter {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2d1b4e;
+            text-align: right;
+            margin-top: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* Enlarged image overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        .close-overlay {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: white;
+            font-size: 60px;
+            cursor: pointer;
+            font-weight: 900;
+            transition: all 0.3s ease;
+        }
+
+        .close-overlay:hover {
+            transform: scale(1.2) rotate(90deg);
+            color: #ff6b6b;
+        }
+
+        /* Moving text elements */
+        .moving-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .moving-text-right {
+            animation: slideInRight 1s ease-out;
+        }
+
+        .bounce-text {
+            animation: bounceIn 1.5s ease-out;
+        }
+
+        /* Floating decorative elements */
+        .floating-emoji {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 4s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .floating-emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-emoji:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .floating-emoji:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .floating-emoji:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 3s; }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-emoji">🎉</div>
+    <div class="floating-emoji">✨</div>
+    <div class="floating-emoji">🌟</div>
+    <div class="floating-emoji">🎈</div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">🏠 Home</a></li>
+            <li><a href="#events">🎊 Events</a></li>
+            <li><a href="#contact">📞 Contact</a></li>
+            <li><a href="help.html" target="_blank">❓ Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Welcome Banner -->
+        <div id="welcomeBanner">
+            <h1>Welcome to Our Amazing Community Portal! 🌈</h1>
+            <p class="highlight moving-subtitle">Connect, Engage, and Participate in Community Events</p>
+            <span class="special-offer">🎉 Special Event Registration - 50% Off This Month! 🎊</span>
+        </div>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h2 class="bounce-text">🏘️ Community Hub 🏘️</h2>
+            <div class="moving-text">
+                <p style="font-size: 1.4rem; font-weight: 700; text-align: center; margin-bottom: 3rem; color: #2d1b4e;">
+                    <strong>Welcome to our VIBRANT community portal where neighbors connect, events come alive, and friendships flourish! 
+                    Discover upcoming events, register for activities, and stay connected with your amazing community.</strong>
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin: 3rem 0;">
+                <button class="btn" onclick="findNearbyEvents()">🗺️ Find Nearby Events</button>
+                <button class="btn" onclick="clearPreferences()">🗑️ Clear Preferences</button>
+            </div>
+            
+            <div id="locationMessage" class="message" style="display: none;"></div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events">
+            <h2 class="bounce-text">🎨 Community Events Gallery 🎪</h2>
+            <table class="gallery-table">
+                <tr>
+                    <td>
+                        <img src="/api/placeholder/350/250" alt="Summer Festival" title="Annual Summer Festival" class="gallery-image" ondblclick="enlargeImage(this)">
+                        <div class="caption">🌞 Summer Festival 2024 🌞</div>
+                    </td>
+                    <td>
+                        <img src="/api/placeholder/350/250" alt="Community Garden" title="Community Garden Project" class="gallery-image" ondblclick="enlargeImage(this)">
+                        <div class="caption">🌱 Community Garden Project 🌿</div>
+                    </td>
+                    <td>
+                        <img src="/api/placeholder/350/250" alt="Art Workshop" title="Local Art Workshop" class="gallery-image" ondblclick="enlargeImage(this)">
+                        <div class="caption">🎨 Art Workshop Series 🖌️</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/api/placeholder/350/250" alt="Sports Day" title="Annual Sports Day" class="gallery-image" ondblclick="enlargeImage(this)">
+                        <div class="caption">⚽ Annual Sports Day 🏆</div>
+                    </td>
+                    <td>
+                        <img src="/api/placeholder/350/250" alt="Music Concert" title="Community Music Concert" class="gallery-image" ondblclick="enlargeImage(this)">
+                        <div class="caption">🎵 Music Concert 🎤</div>
+                    </td>
+                    <td>
+                        <img src="/api/placeholder/350/250" alt="Food Fair" title="International Food Fair" class="gallery-image" ondblclick="enlargeImage(this)">
+                        <div class="caption">🍕 International Food Fair 🌮</div>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Video Section -->
+            <div class="video-container">
+                <h3 class="moving-text">🎬 Event Promo Video 🎥</h3>
+                <video controls oncanplay="videoReady()">
+                    <source src="/api/placeholder/900/500" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div id="videoStatus" class="message" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Contact/Registration Section -->
+        <section id="contact">
+            <h2 class="bounce-text">📝 Event Registration ✨</h2>
+            <div class="form-container">
+                <form id="registrationForm" onsubmit="return handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">👤 Full Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your AMAZING full name" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">✉️ Email Address:</label>
+                        <input type="email" id="email" name="email" placeholder="your.awesome.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">📱 Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" onblur="validatePhone(this)">
+                        <div id="phoneError" class="error" style="display: none;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventDate">📅 Event Date:</label>
+                        <input type="date" id="eventDate" name="eventDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventType">🎉 Event Type:</label>
+                        <select id="eventType" name="eventType" onchange="displaySelectedEvent(this)" required>
+                            <option value="">Select an AMAZING event...</option>
+                            <option value="festival">🌞 Summer Festival</option>
+                            <option value="garden">🌱 Community Garden</option>
+                            <option value="art">🎨 Art Workshop</option>
+                            <option value="sports">⚽ Sports Day</option>
+                            <option value="music">🎵 Music Concert</option>
+                            <option value="food">🍕 Food Fair</option>
+                        </select>
+                        <div id="selectedEvent" class="message" style="display: none;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedback">💭 Additional Comments:</label>
+                        <textarea id="feedback" name="feedback" rows="4" placeholder="Tell us about your EXCITING special requirements or comments..." onkeyup="countCharacters(this)"></textarea>
+                        <div id="charCount" class="char-counter">0 characters typed! ✨</div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" onclick="showConfirmation()">🚀 Register for Event 🎊</button>
+                </form>
+
+                <output id="confirmationMessage" class="message" style="display: none;"></output>
+            </div>
+        </section>
+    </main>
